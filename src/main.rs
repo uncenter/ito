@@ -75,7 +75,7 @@ enum Commands {
 		text: MaybeStdin<String>,
 	},
 	/// Count total characters or the occurrences of a given character
-	CountChar {
+	CountChars {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 		character: Option<char>,
@@ -122,7 +122,7 @@ fn main() {
 			Commands::CountLines { text } => {
 				println!("{}", text.lines().count());
 			}
-			Commands::CountChar { text, character } => {
+			Commands::CountChars { text, character } => {
 				if let Some(character) = character {
 					println!("{}", text.chars().filter(|c| *c == character).count())
 				} else {
