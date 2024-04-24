@@ -68,6 +68,12 @@ enum Commands {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
+
+	// Count newlines in a string
+	CountLines {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+	},
 }
 
 fn main() {
@@ -105,6 +111,10 @@ fn main() {
 			}
 			Commands::Kebab { text } => {
 				println!("{}", text.to_case(Case::Kebab))
+			}
+
+			Commands::CountLines { text } => {
+				println!("{}", text.lines().count());
 			}
 		}
 	}
