@@ -1,0 +1,96 @@
+use clap::{Parser, Subcommand};
+use convert_case::{Case, Casing};
+
+#[derive(Parser)]
+#[command(version, about)]
+struct Cli {
+	#[command(subcommand)]
+	command: Option<Commands>,
+}
+
+#[derive(Subcommand)]
+enum Commands {
+	/// Reverse a string
+	Reverse {
+		text: String,
+	},
+	// Convert a string to UPPER CASE
+	Upper {
+		text: String,
+	},
+	// Convert a string to lower case
+	Lower {
+		text: String,
+	},
+	// Convert a string to Title Case
+	Title {
+		text: String,
+	},
+	// Convert a string to aLtErNaTiNg CaSe
+	Alternating {
+		text: String,
+	},
+	// Convert a string to camelCase
+	Camel {
+		text: String,
+	},
+	// Convert a string to PascalCase
+	Pascal {
+		text: String,
+	},
+	// Convert a string to snake_case
+	Snake {
+		text: String,
+	},
+	// Convert a string to SCREAMING_SNAKE_CASE
+	Screaming {
+		text: String,
+	},
+	// Convert a string to SCREAMING_SNAKE_CASE
+	ScreamingSnake {
+		text: String,
+	},
+	// Convert a string to kebab-case
+	Kebab {
+		text: String,
+	},
+}
+
+fn main() {
+	let args = Cli::parse();
+
+	if let Some(command) = args.command {
+		match command {
+			Commands::Reverse { text } => {
+				println!("{}", text.chars().rev().collect::<String>());
+			}
+			Commands::Upper { text } => {
+				println!("{}", text.to_case(Case::Upper))
+			}
+			Commands::Lower { text } => {
+				println!("{}", text.to_case(Case::Lower))
+			}
+			Commands::Title { text } => {
+				println!("{}", text.to_case(Case::Title))
+			}
+			Commands::Alternating { text } => {
+				println!("{}", text.to_case(Case::Alternating))
+			}
+			Commands::Camel { text } => {
+				println!("{}", text.to_case(Case::Camel))
+			}
+			Commands::Pascal { text } => {
+				println!("{}", text.to_case(Case::Pascal))
+			}
+			Commands::Snake { text } => {
+				println!("{}", text.to_case(Case::Snake))
+			}
+			Commands::Screaming { text } | Commands::ScreamingSnake { text } => {
+				println!("{}", text.to_case(Case::ScreamingSnake))
+			}
+			Commands::Kebab { text } => {
+				println!("{}", text.to_case(Case::Kebab))
+			}
+		}
+	}
+}
