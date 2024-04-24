@@ -74,6 +74,14 @@ enum Commands {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
+	// Count a given charchter
+	CountChar {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+
+		#[clap(default_value = " ")]
+		char: MaybeStdin<char>,
+	}
 }
 
 fn main() {
@@ -115,6 +123,9 @@ fn main() {
 
 			Commands::CountLines { text } => {
 				println!("{}", text.lines().count());
+			}
+			Commands::CountChar { text, char } => {
+				println!("{}", text.chars().filter(|c| *c == *char).count())
 			}
 		}
 	}
