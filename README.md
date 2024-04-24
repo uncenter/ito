@@ -90,6 +90,11 @@ sttr <command> <text>
 - [ ] extract-ip
 - [ ] extract-urls
 
+### Dates
+
+- [ ] epoch-date (https://github.com/abhimanyu003/sttr/issues/40)
+- [ ] date-epoch (https://github.com/abhimanyu003/sttr/issues/40)
+
 ## License
 
 [MIT](LICENSE)
