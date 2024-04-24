@@ -79,7 +79,7 @@ enum Commands {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 		character: Option<char>,
-	}
+	},
 }
 
 fn main() {
@@ -123,11 +123,11 @@ fn main() {
 				println!("{}", text.lines().count());
 			}
 			Commands::CountChar { text, character } => {
-        if let Some(character) = character {
-				  println!("{}", text.chars().filter(|c| *c == character).count())
-        } else {
-          println!("{}", text.chars().count())
-        }
+				if let Some(character) = character {
+					println!("{}", text.chars().filter(|c| *c == character).count())
+				} else {
+					println!("{}", text.chars().count())
+				}
 			}
 		}
 	}
