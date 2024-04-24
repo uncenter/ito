@@ -58,7 +58,7 @@ sttr <command> <text>
 
 ### Count
 
-- [ ] count-chars
+- [x] count-chars
 - [ ] count-words
 - [x] count-lines
 
