@@ -1,4 +1,6 @@
 use clap::{Parser, Subcommand};
+use clap_stdin::MaybeStdin;
+
 use convert_case::{Case, Casing};
 
 #[derive(Parser)]
@@ -12,47 +14,59 @@ struct Cli {
 enum Commands {
 	/// Reverse a string
 	Reverse {
-		text: String,
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
 	},
+
 	// Convert a string to UPPER CASE
 	Upper {
-		text: String,
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
 	},
 	// Convert a string to lower case
 	Lower {
-		text: String,
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
 	},
 	// Convert a string to Title Case
 	Title {
-		text: String,
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
 	},
 	// Convert a string to aLtErNaTiNg CaSe
 	Alternating {
-		text: String,
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
 	},
 	// Convert a string to camelCase
 	Camel {
-		text: String,
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
 	},
 	// Convert a string to PascalCase
 	Pascal {
-		text: String,
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
 	},
 	// Convert a string to snake_case
 	Snake {
-		text: String,
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
 	},
 	// Convert a string to SCREAMING_SNAKE_CASE
 	Screaming {
-		text: String,
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
 	},
 	// Convert a string to SCREAMING_SNAKE_CASE
 	ScreamingSnake {
-		text: String,
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
 	},
 	// Convert a string to kebab-case
 	Kebab {
-		text: String,
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
 	},
 }
 
@@ -64,6 +78,7 @@ fn main() {
 			Commands::Reverse { text } => {
 				println!("{}", text.chars().rev().collect::<String>());
 			}
+
 			Commands::Upper { text } => {
 				println!("{}", text.to_case(Case::Upper))
 			}
