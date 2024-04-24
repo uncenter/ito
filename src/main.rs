@@ -18,58 +18,58 @@ enum Commands {
 		text: MaybeStdin<String>,
 	},
 
-	// Convert a string to UPPER CASE
+	/// Convert a string to UPPER CASE
 	Upper {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
-	// Convert a string to lower case
+	/// Convert a string to lower case
 	Lower {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
-	// Convert a string to Title Case
+	/// Convert a string to Title Case
 	Title {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
-	// Convert a string to aLtErNaTiNg CaSe
+	/// Convert a string to aLtErNaTiNg CaSe
 	Alternating {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
-	// Convert a string to camelCase
+	/// Convert a string to camelCase
 	Camel {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
-	// Convert a string to PascalCase
+	/// Convert a string to PascalCase
 	Pascal {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
-	// Convert a string to snake_case
+	/// Convert a string to snake_case
 	Snake {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
-	// Convert a string to SCREAMING_SNAKE_CASE
+	/// Convert a string to SCREAMING_SNAKE_CASE
 	Screaming {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
-	// Convert a string to SCREAMING_SNAKE_CASE
+	/// Convert a string to SCREAMING_SNAKE_CASE
 	ScreamingSnake {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
-	// Convert a string to kebab-case
+	/// Convert a string to kebab-case
 	Kebab {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
 
-	// Count newlines in a string
+	/// Count newlines in a string
 	CountLines {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
