@@ -74,7 +74,7 @@ enum Commands {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
-	// Count a given character
+	/// Count total characters or the occurrences of a given character
 	CountChar {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
