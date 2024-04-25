@@ -20,19 +20,10 @@ sttr <command> <text>
 
 ### Encode/decode
 
-- [ ] ascii85-encode
-- [ ] ascii85-decode
-- [ ] base32-decode
-- [ ] base32-encode
 - [ ] base64-decode
 - [ ] base64-encode
-- [ ] base85-encode
-- [ ] base85-decode
 - [ ] base64url-decode
 - [ ] base64url-encode
-- [ ] html-decode
-- [ ] html-encode
-- [ ] rot13-encode
 - [ ] url-decode
 - [ ] url-encode
 
