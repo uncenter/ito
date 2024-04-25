@@ -17,6 +17,7 @@ sttr <command> <text>
 ## Roadmap
 
 - [x] reverse
+- [x] replace
 
 ### Encode/decode
 
