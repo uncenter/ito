@@ -7,13 +7,7 @@ rustPlatform.buildRustPackage {
   inherit ((lib.importTOML ../Cargo.toml).package) version;
 
   src = ../.;
-  cargoLock = {
-    lockFile = ../Cargo.lock;
-
-    outputHashes = {
-      "words-count-0.1.6" = "sha256-1oaeP419hnAbp283AB3f8bXi/VCE0CKMZiJvpTr1mWo=";
-    };
-  };
+  cargoLock.lockFile = ../Cargo.lock;
 
   meta = {
     description = "Easily change strings and convert string representations of data";
