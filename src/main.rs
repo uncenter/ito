@@ -88,7 +88,7 @@ enum Commands {
 		word: Option<String>,
 	},
 
-	/// Replace all occurrences of a string with another string
+	/// Replace all occurrences of a search string with a replace string in a string
 	Replace {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
