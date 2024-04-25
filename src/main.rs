@@ -87,6 +87,16 @@ enum Commands {
 		text: MaybeStdin<String>,
 		word: Option<String>,
 	},
+
+	/// Replace all occurrences of a string with another string
+	Replace {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+		#[clap(default_value = "")]
+		find: String,
+		#[clap(default_value = "")]
+		replace: String,
+	},
 }
 
 fn main() {
@@ -149,6 +159,14 @@ fn main() {
 				} else {
 					println!("{}", words.len());
 				}
+			}
+
+			Commands::Replace {
+				text,
+				find,
+				replace,
+			} => {
+				println!("{}", text.replace(&find, &replace));
 			}
 		}
 	}
