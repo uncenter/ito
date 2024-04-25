@@ -86,10 +86,11 @@ enum Commands {
 		text: MaybeStdin<String>,
 		character: Option<char>,
 	},
-	/// Count words in a string
+	/// Count words in a string or the occurrences of a given word
 	CountWords {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
+		word: Option<String>,
 	},
 }
 
@@ -103,31 +104,31 @@ fn main() {
 			}
 
 			Commands::Upper { text } => {
-				println!("{}", text.to_case(Case::Upper))
+				println!("{}", text.to_case(Case::Upper));
 			}
 			Commands::Lower { text } => {
-				println!("{}", text.to_case(Case::Lower))
+				println!("{}", text.to_case(Case::Lower));
 			}
 			Commands::Title { text } => {
-				println!("{}", text.to_case(Case::Title))
+				println!("{}", text.to_case(Case::Title));
 			}
 			Commands::Alternating { text } => {
-				println!("{}", text.to_case(Case::Alternating))
+				println!("{}", text.to_case(Case::Alternating));
 			}
 			Commands::Camel { text } => {
-				println!("{}", text.to_case(Case::Camel))
+				println!("{}", text.to_case(Case::Camel));
 			}
 			Commands::Pascal { text } => {
-				println!("{}", text.to_case(Case::Pascal))
+				println!("{}", text.to_case(Case::Pascal));
 			}
 			Commands::Snake { text } => {
-				println!("{}", text.to_case(Case::Snake))
+				println!("{}", text.to_case(Case::Snake));
 			}
 			Commands::Screaming { text } | Commands::ScreamingSnake { text } => {
-				println!("{}", text.to_case(Case::ScreamingSnake))
+				println!("{}", text.to_case(Case::ScreamingSnake));
 			}
 			Commands::Kebab { text } => {
-				println!("{}", text.to_case(Case::Kebab))
+				println!("{}", text.to_case(Case::Kebab));
 			}
 
 			Commands::CountLines { text } => {
@@ -135,13 +136,18 @@ fn main() {
 			}
 			Commands::CountChars { text, character } => {
 				if let Some(character) = character {
-					println!("{}", text.chars().filter(|c| *c == character).count())
+					println!("{}", text.chars().filter(|c| *c == character).count());
 				} else {
-					println!("{}", text.chars().count())
+					println!("{}", text.chars().count());
 				}
 			}
-			Commands::CountWords { text } => {
-				println!("{}", count_words::count_words(text.to_string()).words.len());
+			Commands::CountWords { text, word } => {
+				let words = count_words::count_words(text.to_string()).words;
+				if let Some(word) = word {
+					println!("{}", words.iter().filter(|&w| *w == word).count());
+				} else {
+					println!("{}", words.len());
+				}
 			}
 		}
 	}
