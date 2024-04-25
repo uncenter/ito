@@ -2,7 +2,12 @@ use clap::{Parser, Subcommand};
 use clap_stdin::MaybeStdin;
 
 use convert_case::{Case, Casing};
-use words_count::count;
+
+mod lib {
+	pub mod count_words;
+}
+
+use lib::*;
 
 #[derive(Parser)]
 #[command(version, about)]
@@ -136,7 +141,7 @@ fn main() {
 				}
 			}
 			Commands::CountWords { text } => {
-				println!("{}", count(text.to_string()).words);
+				println!("{}", count_words::count_words(text.to_string()).words.len());
 			}
 		}
 	}
