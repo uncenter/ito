@@ -151,6 +151,7 @@ dependencies = [
  "clap",
  "clap-stdin",
  "convert_case",
+ "words-count",
 ]
 
 [[package]]
@@ -183,6 +184,12 @@ dependencies = [
  "quote",
  "syn",
 ]
+
+[[package]]
+name = "unicode-blocks"
+version = "0.1.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6b12e05d9e06373163a9bb6bb8c263c261b396643a99445fe6b9811fd376581b"
 
 [[package]]
 name = "unicode-ident"
@@ -267,3 +274,11 @@ name = "windows_x86_64_msvc"
 version = "0.52.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dff9641d1cd4be8d1a070daf9e3773c5f67e78b4d9d42263020c057706765c04"
+
+[[package]]
+name = "words-count"
+version = "0.1.6"
+source = "git+https://github.com/uncenter/words-count?branch=fix/cjk-chars#c0f9cab282c777886425f32447836e7131912e7a"
+dependencies = [
+ "unicode-blocks",
+]

@@ -59,7 +59,7 @@ sttr <command> <text>
 ### Count
 
 - [x] count-chars
-- [ ] count-words
+- [x] count-words
 - [x] count-lines
 
 ### Lines

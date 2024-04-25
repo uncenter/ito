@@ -2,6 +2,7 @@ use clap::{Parser, Subcommand};
 use clap_stdin::MaybeStdin;
 
 use convert_case::{Case, Casing};
+use words_count::count;
 
 #[derive(Parser)]
 #[command(version, about)]
@@ -80,6 +81,11 @@ enum Commands {
 		text: MaybeStdin<String>,
 		character: Option<char>,
 	},
+	/// Count words in a string
+	CountWords {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+	},
 }
 
 fn main() {
@@ -128,6 +134,9 @@ fn main() {
 				} else {
 					println!("{}", text.chars().count())
 				}
+			}
+			Commands::CountWords { text } => {
+				println!("{}", count(text.to_string()).words);
 			}
 		}
 	}
