@@ -139,7 +139,13 @@ fn main() {
 			Commands::CountWords { text, word } => {
 				let words = text.unicode_words().collect::<Vec<&str>>();
 				if let Some(word) = word {
-					println!("{}", words.iter().filter(|&w| *w == word).count());
+					println!(
+						"{}",
+						words
+							.iter()
+							.filter(|&w| *w.to_lowercase() == word.to_lowercase())
+							.count()
+					);
 				} else {
 					println!("{}", words.len());
 				}
