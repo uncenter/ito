@@ -151,7 +151,7 @@ dependencies = [
  "clap",
  "clap-stdin",
  "convert_case",
- "unicode-blocks",
+ "unicode-segmentation",
 ]
 
 [[package]]
@@ -184,12 +184,6 @@ dependencies = [
  "quote",
  "syn",
 ]
-
-[[package]]
-name = "unicode-blocks"
-version = "0.1.9"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6b12e05d9e06373163a9bb6bb8c263c261b396643a99445fe6b9811fd376581b"
 
 [[package]]
 name = "unicode-ident"

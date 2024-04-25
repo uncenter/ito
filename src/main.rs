@@ -2,12 +2,7 @@ use clap::{Parser, Subcommand};
 use clap_stdin::MaybeStdin;
 
 use convert_case::{Case, Casing};
-
-mod lib {
-	pub mod count_words;
-}
-
-use lib::*;
+use unicode_segmentation::UnicodeSegmentation;
 
 #[derive(Parser)]
 #[command(version, about)]
@@ -142,7 +137,7 @@ fn main() {
 				}
 			}
 			Commands::CountWords { text, word } => {
-				let words = count_words::count_words(text.to_string()).words;
+				let words = text.unicode_words().collect::<Vec<&str>>();
 				if let Some(word) = word {
 					println!("{}", words.iter().filter(|&w| *w == word).count());
 				} else {
