@@ -21,8 +21,8 @@ sttr <command> <text>
 
 ### Encode/decode
 
-- [ ] base64-decode
-- [ ] base64-encode
+- [x] base64-decode
+- [x] base64-encode
 - [ ] base64url-decode
 - [ ] base64url-encode
 - [ ] url-decode

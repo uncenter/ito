@@ -1,6 +1,9 @@
 use clap::{Parser, Subcommand};
 use clap_stdin::MaybeStdin;
 
+use eyre::{Result, WrapErr};
+
+use base64::{engine::general_purpose, Engine as _};
 use convert_case::{Case, Casing};
 use unicode_segmentation::UnicodeSegmentation;
 
@@ -103,9 +106,21 @@ enum Commands {
 		#[clap(default_value = "")]
 		replace: String,
 	},
+
+	/// Encode a string in base64
+	Base64Encode {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+	},
+
+	/// Decode a base64 string
+	Base64Decode {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+	},
 }
 
-fn main() {
+fn main() -> Result<()> {
 	let args = Cli::parse();
 
 	if let Some(command) = args.command {
@@ -178,6 +193,22 @@ fn main() {
 			} => {
 				println!("{}", text.replace(&find, &replace));
 			}
+
+			Commands::Base64Encode { text } => {
+				println!("{}", general_purpose::STANDARD.encode(text.as_bytes()));
+			}
+			Commands::Base64Decode { text } => {
+				println!(
+					"{}",
+					String::from_utf8_lossy(
+						&general_purpose::STANDARD
+							.decode(text.as_bytes())
+							.with_context(|| "Failed to deocde base64 string")?
+					)
+				);
+			}
 		}
 	}
+
+	Ok(())
 }
