@@ -142,17 +142,11 @@ fn main() {
 				}
 			}
 			Commands::CountWords { text, word } => {
+				let words = count_words::count_words(text.to_string()).words;
 				if let Some(word) = word {
-					println!(
-						"{}",
-						count_words::count_words(text.to_string())
-							.words
-							.iter()
-							.filter(|&w| *w == word)
-							.count()
-					);
+					println!("{}", words.iter().filter(|&w| *w == word).count());
 				} else {
-					println!("{}", count_words::count_words(text.to_string()).words.len());
+					println!("{}", words.len());
 				}
 			}
 		}
