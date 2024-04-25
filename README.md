@@ -56,7 +56,7 @@ sttr <command> <text>
 
 ### Lines
 
-- [ ] reverse-lines
+- [x] reverse-lines
 - [ ] shuffle-lines
 - [ ] sort-lines
 - [ ] unique-lines

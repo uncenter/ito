@@ -70,6 +70,12 @@ enum Commands {
 		text: MaybeStdin<String>,
 	},
 
+	/// Reverse the lines of a string
+	ReverseLines {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+	},
+
 	/// Count newlines in a string
 	CountLines {
 		#[clap(default_value = "-")]
@@ -134,6 +140,10 @@ fn main() {
 			}
 			Commands::Kebab { text } => {
 				println!("{}", text.to_case(Case::Kebab));
+			}
+
+			Commands::ReverseLines { text } => {
+				println!("{}", text.lines().rev().collect::<Vec<_>>().join("\n"))
 			}
 
 			Commands::CountLines { text } => {
