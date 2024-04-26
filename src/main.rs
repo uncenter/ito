@@ -203,7 +203,7 @@ fn main() -> Result<()> {
 					String::from_utf8_lossy(
 						&general_purpose::STANDARD
 							.decode(text.as_bytes())
-							.with_context(|| "Failed to deocde base64 string")?
+							.with_context(|| "Failed to decode base64 string")?
 					)
 				);
 			}
