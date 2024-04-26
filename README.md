@@ -57,8 +57,8 @@ sttr <command> <text>
 ### Lines
 
 - [x] reverse-lines
-- [ ] shuffle-lines
-- [ ] sort-lines
+- [x] shuffle-lines
+- [x] sort-lines
 - [ ] unique-lines
 
 ### Hex

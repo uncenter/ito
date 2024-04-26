@@ -5,6 +5,7 @@ use eyre::{Result, WrapErr};
 
 use base64::{engine::general_purpose, Engine as _};
 use convert_case::{Case, Casing};
+use rand::seq::SliceRandom;
 use unicode_segmentation::UnicodeSegmentation;
 
 #[derive(Parser)]
@@ -78,6 +79,17 @@ enum Commands {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
+	/// Shuffle the lines of a string
+	ShuffleLines {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+	},
+
+	/// Sort the lines of a string
+	SortLines {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+	},
 
 	/// Count newlines in a string
 	CountLines {
@@ -112,7 +124,6 @@ enum Commands {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
-
 	/// Decode a base64 string
 	Base64Decode {
 		#[clap(default_value = "-")]
@@ -159,6 +170,16 @@ fn main() -> Result<()> {
 
 			Commands::ReverseLines { text } => {
 				println!("{}", text.lines().rev().collect::<Vec<_>>().join("\n"))
+			}
+			Commands::ShuffleLines { text } => {
+				let mut lines: Vec<_> = text.lines().collect();
+				lines.shuffle(&mut rand::thread_rng());
+				println!("{}", lines.join("\n"));
+			}
+			Commands::SortLines { text } => {
+				let mut lines: Vec<_> = text.lines().collect();
+				lines.sort();
+				println!("{}", lines.join("\n"));
 			}
 
 			Commands::CountLines { text } => {
