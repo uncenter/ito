@@ -123,6 +123,13 @@ enum Commands {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
+	/// Repeat a string x times
+	Repeat {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+		#[clap(default_value = "1")]
+		count: usize,
+	},
 	/// Replace all occurrences of a search string with a replace string in a string
 	Replace {
 		#[clap(default_value = "-")]
@@ -165,6 +172,7 @@ fn main() -> Result<()> {
 				Commands::SortLines { text } => lines::sort_lines(text),
 
 				Commands::Reverse { text } => misc::reverse(text),
+				Commands::Repeat { text, count } => misc::repeat(text, count),
 				Commands::Replace {
 					text,
 					find,
