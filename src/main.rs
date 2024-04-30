@@ -139,6 +139,11 @@ enum Commands {
 		#[clap(default_value = "")]
 		replace: String,
 	},
+	/// Trim trailing whitespace and newlines from a string
+	Trim {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+	},
 }
 
 fn main() -> Result<()> {
@@ -178,6 +183,7 @@ fn main() -> Result<()> {
 					find,
 					replace,
 				} => misc::replace(text, find, replace),
+				Commands::Trim { text } => misc::trim(text),
 			}
 		);
 	}

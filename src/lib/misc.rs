@@ -11,3 +11,7 @@ pub fn repeat(text: MaybeStdin<String>, count: usize) -> String {
 pub fn replace(text: MaybeStdin<String>, find: String, replace: String) -> String {
 	return text.replace(&find, &replace);
 }
+
+pub fn trim(text: MaybeStdin<String>) -> String {
+	return text.trim().to_string();
+}
