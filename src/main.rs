@@ -118,6 +118,12 @@ enum Commands {
 		text: MaybeStdin<String>,
 	},
 
+	/// Join strings with a given joiner
+	Join {
+		text: Vec<String>,
+		#[clap(default_value = "\n", last(true))]
+		joiner: String,
+	},
 	/// Reverse a string
 	Reverse {
 		#[clap(default_value = "-")]
@@ -176,6 +182,7 @@ fn main() -> Result<()> {
 				Commands::ShuffleLines { text } => lines::shuffle_lines(text),
 				Commands::SortLines { text } => lines::sort_lines(text),
 
+				Commands::Join { text, joiner } => misc::join(text, joiner),
 				Commands::Reverse { text } => misc::reverse(text),
 				Commands::Repeat { text, count } => misc::repeat(text, count),
 				Commands::Replace {

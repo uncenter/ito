@@ -1,5 +1,9 @@
 use clap_stdin::MaybeStdin;
 
+pub fn join(text: Vec<String>, joiner: String) -> String {
+	return text.join(&joiner);
+}
+
 pub fn reverse(text: MaybeStdin<String>) -> String {
 	return text.chars().rev().collect::<String>();
 }
