@@ -7,6 +7,7 @@ mod lib {
 	pub mod base64;
 	pub mod case;
 	pub mod count;
+	pub mod formats;
 	pub mod lines;
 	pub mod misc;
 }
@@ -150,6 +151,15 @@ enum Commands {
 		#[clap(default_value = "-")]
 		text: MaybeStdin<String>,
 	},
+
+	JsonToToml {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+	},
+	TomlToJson {
+		#[clap(default_value = "-")]
+		text: MaybeStdin<String>,
+	},
 }
 
 fn main() -> Result<()> {
@@ -191,6 +201,9 @@ fn main() -> Result<()> {
 					replace,
 				} => misc::replace(text, find, replace),
 				Commands::Trim { text } => misc::trim(text),
+
+				Commands::JsonToToml { text } => formats::json_to_toml(text),
+				Commands::TomlToJson { text } => formats::toml_to_json(text),
 			}
 		);
 	}
