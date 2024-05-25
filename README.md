@@ -1,17 +1,25 @@
-# sttr-rs
+# ito
 
-Easily change strings and convert string representations of data. A port of [`sttr`](https://github.com/abhimanyu003/sttr) in Rust.
+A powerful string manipulation tool. Originally a port of [`sttr`](https://github.com/abhimanyu003/sttr) in Rust.
 
 ## Installation
 
+### Cargo
+
 ```sh
-cargo install --git https://github.com/uncenter/sttr-rs.git
+cargo install --git https://github.com/uncenter/ito.git
+```
+
+### Nix
+
+```sh
+nix run github:uncenter/ito
 ```
 
 ## Usage
 
 ```
-sttr <command> <text>
+ito <COMMAND> <TEXT>
 ```
 
 ## Roadmap

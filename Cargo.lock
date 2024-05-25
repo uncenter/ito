@@ -160,6 +160,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ce23b50ad8242c51a442f3ff322d56b02f08852c77e4c0b4d3fd684abc89c683"
 
 [[package]]
+name = "ito"
+version = "0.1.0"
+dependencies = [
+ "base64",
+ "clap",
+ "clap-stdin",
+ "convert_case",
+ "eyre",
+ "rand",
+ "unicode-segmentation",
+]
+
+[[package]]
 name = "libc"
 version = "0.2.153"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -230,19 +243,6 @@ name = "strsim"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
-
-[[package]]
-name = "sttr"
-version = "0.1.0"
-dependencies = [
- "base64",
- "clap",
- "clap-stdin",
- "convert_case",
- "eyre",
- "rand",
- "unicode-segmentation",
-]
 
 [[package]]
 name = "syn"

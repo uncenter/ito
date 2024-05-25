@@ -1,12 +1,12 @@
 [package]
-name = "sttr"
+name = "ito"
 version = "0.1.0"
 authors = ["uncenter <uncenter@uncenter.dev>"]
 license = "MIT"
-description = "Easily change strings and convert string representations of data"
+description = "A powerful string manipulation tool"
 readme = "README.md"
-homepage = "https://github.com/uncenter/sttr-rs"
-repository = "https://github.com/uncenter/sttr-rs"
+homepage = "https://github.com/uncenter/ito"
+repository = "https://github.com/uncenter/ito"
 keywords = ["cli"]
 categories = ["command-line-utilities"]
 edition = "2021"

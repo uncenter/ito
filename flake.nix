@@ -1,21 +1,24 @@
 {
-  description = "sttr-rs - Easily change strings and convert string representations of data";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
-  };
+  outputs =
+    { nixpkgs, ... }:
+    let
+      forAllSystems =
+        function:
+        nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
+          system: function nixpkgs.legacyPackages.${system}
+        );
+    in
+    {
+      formatter = forAllSystems (pkgs: pkgs.nixfmt-rfc-style);
 
-  outputs = {nixpkgs, ...}: let
-    systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
-    forEachSystem = nixpkgs.lib.genAttrs systems;
-    pkgsForEach = nixpkgs.legacyPackages;
-  in {
-    packages = forEachSystem (system: {
-      default = pkgsForEach.${system}.callPackage ./nix/default.nix {};
-    });
+      devShells = forAllSystems (pkgs: {
+        default = pkgs.callPackage ./nix/shell.nix { };
+      });
 
-    devShells = forEachSystem (system: {
-      default = pkgsForEach.${system}.callPackage ./nix/shell.nix {};
-    });
-  };
+      packages = forAllSystems (pkgs: {
+        default = pkgs.callPackage ./nix/default.nix { };
+      });
+    };
 }

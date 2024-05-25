@@ -1,19 +1,15 @@
-{
-  lib,
-  rustPlatform,
-}:
+{ lib, rustPlatform }:
 rustPlatform.buildRustPackage {
-  pname = "sttr-rs";
+  pname = "ito";
   inherit ((lib.importTOML ../Cargo.toml).package) version;
 
   src = ../.;
   cargoLock.lockFile = ../Cargo.lock;
 
   meta = {
-    description = "Easily change strings and convert string representations of data";
-    homepage = "https://github.com/uncenter/sttr-rs";
+    description = "A powerful string manipulation tool";
+    homepage = "https://github.com/uncenter/ito";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [uncenter];
-    mainProgram = "sttr";
+    mainProgram = "ito";
   };
 }
