@@ -95,6 +95,10 @@ ito <COMMAND> <TEXT>
 - [ ] epoch-date (https://github.com/abhimanyu003/sttr/issues/40)
 - [ ] date-epoch (https://github.com/abhimanyu003/sttr/issues/40)
 
+### Other
+
+- [ ] Lorem ipsum (using https://github.com/mgeisler/lipsum)
+
 ## License
 
 [MIT](LICENSE)
