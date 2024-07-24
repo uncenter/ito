@@ -170,6 +170,26 @@ enum Commands {
         #[clap(default_value = "-")]
         text: MaybeStdin<String>,
     },
+    /// Encode a string in base64url
+    Base64urlEncode {
+        #[clap(default_value = "-")]
+        text: MaybeStdin<String>,
+    },
+    /// Decode a base64url string
+    Base64urlDecode {
+        #[clap(default_value = "-")]
+        text: MaybeStdin<String>,
+    },
+    /// URL encode a string
+    UrlEncode {
+        #[clap(default_value = "-")]
+        text: MaybeStdin<String>,
+    },
+    /// URL decode a string
+    UrlDecode {
+        #[clap(default_value = "-")]
+        text: MaybeStdin<String>,
+    },
 }
 
 fn main() -> Result<()> {
@@ -187,9 +207,7 @@ fn main() -> Result<()> {
                 Commands::Camel { text } => case::camel(text),
                 Commands::Pascal { text } => case::pascal(text),
                 Commands::Snake { text } => case::snake(text),
-                Commands::Screaming { text } | Commands::ScreamingSnake { text } => {
-                    case::screaming(text)
-                }
+                Commands::Screaming { text } | Commands::ScreamingSnake { text } => case::screaming(text),
                 Commands::Kebab { text } => case::kebab(text),
                 Commands::CountLines { text } => count::count_lines(text),
                 Commands::CountChars { text, character } => count::count_chars(text, character),
@@ -200,17 +218,17 @@ fn main() -> Result<()> {
                 Commands::Join { text, joiner } => misc::join(text, joiner),
                 Commands::Reverse { text } => misc::reverse(text),
                 Commands::Repeat { text, count } => misc::repeat(text, count),
-                Commands::Replace {
-                    text,
-                    find,
-                    replace,
-                } => misc::replace(text, find, replace),
+                Commands::Replace { text, find, replace } => misc::replace(text, find, replace),
                 Commands::Trim { text } => misc::trim(text),
                 Commands::Bcrypt { text } => hash::bcrypt(text),
                 Commands::Md5 { text } => hash::md5(text),
                 Commands::Sha1 { text } => hash::sha1(text),
                 Commands::Sha256 { text } => hash::sha256(text),
                 Commands::Sha512 { text } => hash::sha512(text),
+                Commands::Base64urlEncode { text } => base64::base64url_encode(text),
+                Commands::Base64urlDecode { text } => base64::base64url_decode(text).unwrap(),
+                Commands::UrlEncode { text } => base64::url_encode(text),
+                Commands::UrlDecode { text } => base64::url_decode(text).unwrap(),
             }
         );
     }
