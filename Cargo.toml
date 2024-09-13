@@ -18,7 +18,7 @@ clap-stdin = "0.4.0"
 convert_case = "0.6.0"
 eyre = "0.6.12"
 rand = "0.8.5"
-unicode-segmentation = "1.11.0"
+unicode-segmentation = "1.12.0"
 
 [lints.clippy]
 all = "warn"
