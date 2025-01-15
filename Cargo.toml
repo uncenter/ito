@@ -19,6 +19,11 @@ convert_case = "0.6.0"
 eyre = "0.6.12"
 rand = "0.8.5"
 unicode-segmentation = "1.11.0"
+bcrypt = "0.15"
+md5 = "0.7"
+sha1 = "0.10"
+sha2 = "0.10"
+urlencoding = "2.1.2"
 
 [lints.clippy]
 all = "warn"

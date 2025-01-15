@@ -31,18 +31,18 @@ ito <COMMAND> <TEXT>
 
 - [x] base64-decode
 - [x] base64-encode
-- [ ] base64url-decode
-- [ ] base64url-encode
-- [ ] url-decode
-- [ ] url-encode
+- [x] base64url-decode
+- [x] base64url-encode
+- [x] url-decode
+- [x] url-encode
 
 ### Hash
 
-- [ ] bcrypt
-- [ ] md5
-- [ ] sha1
-- [ ] sha256
-- [ ] sha512
+- [x] bcrypt
+- [x] md5
+- [x] sha1
+- [x] sha256
+- [x] sha512
 
 ### Case conversion
 
